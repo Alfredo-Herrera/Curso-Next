@@ -19,4 +19,8 @@ export interface SmallPokemon {
 
 export interface HomePageProps {
     pokemons: SmallPokemon[];
-} 
+}
+
+export interface CardPokemonProps {
+    pokemon: SmallPokemon
+}

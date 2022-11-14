@@ -1,29 +1,18 @@
-import { Button, Card, Grid, Row, Text } from "@nextui-org/react";
+import { Card, Grid, Row, Text } from "@nextui-org/react";
 import { ReactElement } from "react";
 import MainLayout from "../src/components/layouts/MainLayout";
 import { NextPageWithLayout } from "./_app";
 import { GetStaticProps } from 'next'
 import axios from 'axios';
 import { HomePageProps, PokemonListResponse, SmallPokemon } from "../interfaces";
+import { PokemonCard } from '../src/components/pokemon/PokemonCard';
 
 
 const HomePage: NextPageWithLayout<HomePageProps> = ({ pokemons }) => {
   return (
     <Grid.Container gap={2} justify="flex-start">
-      {pokemons.map(({ id, name, img }) => (
-        <Grid xs={6} sm={3} md={2} xl={1} key={id}>
-          <Card isHoverable isPressable>
-            <Card.Body css={{ p: 1 }}>
-              <Card.Image src={img} width="100%" height={140} />
-            </Card.Body>
-            <Card.Footer>
-              <Row justify="space-between">
-                <Text transform="capitalize">{name}</Text>
-                <Text># {id}</Text>
-              </Row>
-            </Card.Footer>
-          </Card>
-        </Grid>
+      {pokemons.map((pokemon) => (
+        <PokemonCard key={pokemon.id} pokemon={pokemon} />
       ))}
     </Grid.Container>
   )
